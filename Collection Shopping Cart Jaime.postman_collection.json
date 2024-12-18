@@ -1,0 +1,398 @@
+{
+	"info": {
+		"_postman_id": "1c0e2868-87a7-48e0-89d5-949885b13db2",
+		"name": "Collection Shopping Cart Jaime",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Order",
+			"item": [
+				{
+					"name": "addProductCart",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n\t\"userId\": 5,\r\n\t\"date\": \"2020-02-03\",\r\n\t\"products\": [\r\n\t\t{\r\n\t\t\t\"productId\": 5,\r\n\t\t\t\"quantity\": 1,\r\n            \"price\": 500\r\n\t\t},\r\n\t\t{\r\n\t\t\t\"productId\": 1,\r\n\t\t\t\"quantity\": 5,\r\n            \"price\": 90.5\r\n\t\t},\r\n        {\r\n\t\t\t\"productId\": 2,\r\n\t\t\t\"quantity\": 10,\r\n            \"price\": 50.7\r\n\t\t}\r\n\t]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/v1/addProductCart",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"v1",
+								"addProductCart"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "modProductCart",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n\t\"userId\": 5,\r\n\t\"date\": \"2020-02-03\",\r\n\t\"products\": [\r\n\t\t{\r\n\t\t\t\"productId\": 5,\r\n\t\t\t\"quantity\": 12,\r\n            \"price\": 500\r\n\t\t}\r\n\t]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/v1/modProductCart",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"v1",
+								"modProductCart"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "deleteProdOrder",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n\t\"userId\": 5,\r\n\t\"date\": \"2020-02-03\",\r\n\t\"products\": [\r\n\t\t{\r\n\t\t\t\"productId\": 5\r\n\t\t}\r\n\t]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/v1/deleteProdOrder",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"v1",
+								"deleteProdOrder"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getOrder",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n\t\"userId\": 5,\r\n\t\"date\": \"2020-02-03\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/v1/getOrder",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"v1",
+								"getOrder"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Products",
+			"item": [
+				{
+					"name": "getSingleProduct",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n\t\"productId\": 1\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/v1/singleProduct",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"v1",
+								"singleProduct"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "limitResult",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"productId\":2\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/v1/limitResult",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"v1",
+								"limitResult"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "allProducts",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/v1/allProducts",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"v1",
+								"allProducts"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "sortResults",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"value\":\"desc\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/v1/sortResults",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"v1",
+								"sortResults"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getAllCategories",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/v1/getAllCategories",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"v1",
+								"getAllCategories"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getProductsSpecificCategory",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"value\":\"jewelery\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/v1/getProductsSpecificCategory",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"v1",
+								"getProductsSpecificCategory"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "addNewProduct",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\t\r\n\t\"title\": \"Producto222\",\r\n\t\"price\": 29.99,\r\n\t\"description\": \"Descripción del producto de ejemplo\",\r\n\t\"category\": \"Categoría de ejemplo\",\r\n\t\"image\": \"http://example.com/image.jpg\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/v1/addNewProduct",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"v1",
+								"addNewProduct"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "deleteProduct",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n\t\"productId\": 1\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/v1/deleteProduct",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"v1",
+								"deleteProduct"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "updateProduct",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n\t\"productId\": 1,\r\n\t\"title\": \"Producto23\",\r\n\t\"price\": 29.99,\r\n\t\"description\": \"Descripción del producto de ejemplo\",\r\n\t\"category\": \"Categoría de ejemplo\",\r\n\t\"image\": \"http://example.com/image.jpg\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/v1/updateProduct",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"v1",
+								"updateProduct"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Payment",
+			"item": [
+				{
+					"name": "paymentCash",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n\t\"userId\": 5,\r\n\t\"date\": \"2020-02-03\",\r\n\t\"mount\": 1400.50\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/v1/paymentCash",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"v1",
+								"paymentCash"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
