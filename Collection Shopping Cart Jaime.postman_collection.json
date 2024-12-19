@@ -43,7 +43,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n\t\"userId\": 5,\r\n\t\"date\": \"2020-02-03\",\r\n\t\"products\": [\r\n\t\t{\r\n\t\t\t\"productId\": 5,\r\n\t\t\t\"quantity\": 12,\r\n            \"price\": 500\r\n\t\t}\r\n\t]\r\n}",
+							"raw": "{\r\n\t\"userId\": 5,\r\n\t\"date\": \"2020-02-03\",\r\n\t\"products\": [\r\n\t\t{\r\n\t\t\t\"productId\": 5,\r\n\t\t\t\"quantity\": 13,\r\n            \"price\": 555.1\r\n\t\t}\r\n\t]\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -71,7 +71,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n\t\"userId\": 5,\r\n\t\"date\": \"2020-02-03\",\r\n\t\"products\": [\r\n\t\t{\r\n\t\t\t\"productId\": 5\r\n\t\t}\r\n\t]\r\n}",
+							"raw": "{\r\n\t\"userId\": 5,\r\n\t\"date\": \"2020-02-03\",\r\n\t\"products\": [\r\n\t\t{\r\n\t\t\t\"productId\": 5\r\n\t\t},\r\n        {\r\n\t\t\t\"productId\": 1\r\n\t\t}\r\n\t]\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"

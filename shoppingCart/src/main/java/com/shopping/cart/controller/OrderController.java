@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.shopping.cart.interfaces.order.OrderInterfaces;
 import com.shopping.cart.models.dto.order.OrderDto;
 import com.shopping.cart.models.dto.order.ClientDto;
+import com.shopping.cart.models.dto.order.DeleteOrderDto;
 import com.shopping.cart.utilidades.ErrorExceptionHandler;
 
 import jakarta.validation.Valid;
@@ -38,7 +39,7 @@ public class OrderController extends ErrorExceptionHandler {
 	}
 	
 	@PostMapping("/deleteProdOrder")
-	public ResponseEntity<Object> deleteProdOrder(@Valid @RequestBody OrderDto order) 
+	public ResponseEntity<Object> deleteProdOrder(@Valid @RequestBody DeleteOrderDto order) 
 	{ 
 		return apiService.deleteProdOrder(order);
 	}

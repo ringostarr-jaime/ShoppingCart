@@ -23,7 +23,7 @@ public class PaymentService extends ErrorExceptionHandler implements PaymentInte
 		try {
 			ResponseEntity<Object> responseEntity = null;	
 			double totalAmount=0.00;
-			
+			double totalDebt=0.00;
 			for (int i = 0; i < OrderService.listCart.get(0).getProducts().size(); i++) {			
 				totalAmount= totalAmount+OrderService.listCart.get(0).getProducts().get(i).getPrice();
 			}
@@ -39,13 +39,14 @@ public class PaymentService extends ErrorExceptionHandler implements PaymentInte
 					LocalDateTime date = LocalDateTime.now();
 					pay.setIdTransaction(uuid);
 					double mountTemp = 0.00;
+					totalDebt=totalAmount;
 					totalAmount=pay.getMount();								
 					for (int i = 0; i < OrderService.listCart.get(0).getProducts().size(); i++) {
 						mountTemp = OrderService.listCart.get(0).getProducts().get(i).getPrice();					
 						totalAmount=(totalAmount-mountTemp);
 						if(totalAmount>0)
 						{
-							OrderService.listCart.get(0).getProducts().get(i).setPrice(0);					
+							OrderService.listCart.get(0).getProducts().get(i).setPrice(0.00);					
 						}else
 						{
 							
@@ -59,13 +60,13 @@ public class PaymentService extends ErrorExceptionHandler implements PaymentInte
 					
 					if(totalAmount>0)
 					{	
-						logger.info("Payment made on the day {} change {}",date,totalAmount);
-						pay.setComment("Payment made on the day "+date+" change $"+totalAmount);
+						logger.info("Payment made on the day {} change {} total debt {}",date,totalAmount,totalDebt);
+						pay.setComment("Payment made on the day "+date+" total debt canceled $"+totalDebt+" change $"+totalAmount);
 					}else
 					{								
 						logger.info("the debt was paid");
 						OrderService.listCart.clear();
-						pay.setComment("Payment made on the day "+date+" paid in full");
+						pay.setComment("Payment made on the day "+date+" paid in full total debt canceled "+totalDebt);
 					}
 					logger.info("completed successfully paymentCash");
 					return responseEntity.ok(pay);						

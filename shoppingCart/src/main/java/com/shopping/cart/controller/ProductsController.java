@@ -14,13 +14,14 @@ import com.shopping.cart.implement.product.ProductsService;
 import com.shopping.cart.models.dto.product.Product;
 import com.shopping.cart.models.dto.product.ProductId;
 import com.shopping.cart.models.dto.product.ProductValue;
+import com.shopping.cart.utilidades.ErrorExceptionHandler;
 
 import jakarta.validation.Valid;
 
 
 @RestController
 @RequestMapping("${products.version}")
-public class ProductsController {
+public class ProductsController extends ErrorExceptionHandler {
 	
 	@Autowired
 	private ProductsService apiService;

@@ -13,7 +13,9 @@ import com.shopping.cart.interfaces.order.OrderInterfaces;
 import com.shopping.cart.models.dto.order.OrderDto;
 import com.shopping.cart.models.dto.order.ProductOrder;
 import com.shopping.cart.models.dto.order.ClientDto;
+import com.shopping.cart.models.dto.order.DeleteOrderDto;
 import com.shopping.cart.utilidades.ErrorExceptionHandler;
+import com.shopping.cart.utilidades.Utilidades;
 
 @Service
 public class OrderService extends ErrorExceptionHandler implements OrderInterfaces{
@@ -37,7 +39,7 @@ public class OrderService extends ErrorExceptionHandler implements OrderInterfac
 				ProductOrder prOrder = new ProductOrder();
 				prOrder.setProductId(order.getProducts().get(i).getProductId());
 				prOrder.setQuantity(order.getProducts().get(i).getQuantity());			
-				Double price = order.getProducts().get(i).getQuantity() * order.getProducts().get(i).getPrice();
+				Double price = Utilidades.formato(order.getProducts().get(i).getQuantity(), order.getProducts().get(i).getPrice());
 				prOrder.setPrice(price);			
 				listProduct.add(prOrder);				
 			}		
@@ -72,7 +74,7 @@ public class OrderService extends ErrorExceptionHandler implements OrderInterfac
 	}
 	
 	@Override
-	public ResponseEntity<Object> deleteProdOrder(OrderDto order) {
+	public ResponseEntity<Object> deleteProdOrder(DeleteOrderDto order) {
 		
 		try {
 			ResponseEntity<Object> responseEntity = null;
@@ -82,11 +84,11 @@ public class OrderService extends ErrorExceptionHandler implements OrderInterfac
 						&& (order.getUserId()==listCart.get(0).getUserId()
 						&& order.getDate().trim().equals(listCart.get(0).getDate().trim())))
 				{				
-					if(order.getProducts().get(i).getProductId()==listCart.get(0).getProducts().get(i).getProductId())
-					{
-						Long idTemp = order.getProducts().get(i).getProductId();							
-						listCart.forEach(cart -> cart.getProducts().removeIf(product -> product.getProductId().equals(idTemp)));					
-					}
+					Long idTemp = order.getProducts().get(i).getProductId();							
+					//listCart.forEach(cart -> cart.getProducts().removeIf(product -> product.getProductId().equals(idTemp)));
+					listCart.get(0).getProducts().removeIf(cart -> cart.getProductId() == idTemp);
+					logger.info("LIST FILLING modProductCart {}",listCart.get(0).getProducts().size());
+					listProduct.removeIf(cart -> cart.getProductId() == idTemp);
 				}	
 			}		
 			
@@ -109,17 +111,22 @@ public class OrderService extends ErrorExceptionHandler implements OrderInterfac
 	@Override
 	public ResponseEntity<Object> modProductCart(OrderDto order) {
 		try {
+			System.out.println("listCart "+listCart.get(0).getProducts().size());
 			for (int i = 0; i < order.getProducts().size(); i++) {
 				if(!listCart.isEmpty()
 						&& (order.getUserId()==listCart.get(0).getUserId()
 						&& order.getDate().trim().equals(listCart.get(0).getDate().trim())))
-				{				
-					if(order.getProducts().get(i).getProductId()==listCart.get(0).getProducts().get(i).getProductId())
-					{
+				{		
+					System.out.println("order.getProducts().get(i).getProductId() "+order.getProducts().get(i).getProductId());
+					System.out.println("listCart.get(0).getProducts().get(i).getProductId() "+listCart.get(0).getProducts().get(i).getProductId());
+					//if(order.getProducts().get(i).getProductId()==listCart.get(0).getProducts().get(i).getProductId())
+					//{
 						Long idTemp = order.getProducts().get(i).getProductId();							
-						listCart.forEach(cart -> cart.getProducts().removeIf(product -> product.getProductId().equals(idTemp)));						
-						logger.info("LIST FILLING modProductCart {}",listCart.size());
-					}
+						//listCart.forEach(cart -> cart.getProducts().removeIf(product -> product.getProductId().equals(idTemp)));
+						listCart.get(0).getProducts().removeIf(cart -> cart.getProductId() == idTemp);
+						logger.info("LIST FILLING modProductCart {}",listCart.get(0).getProducts().size());
+						listProduct.removeIf(cart -> cart.getProductId() == idTemp);
+					//}
 				}	
 			}
 			ResponseEntity<Object> responseEntity = null;			
@@ -133,16 +140,17 @@ public class OrderService extends ErrorExceptionHandler implements OrderInterfac
 					ProductOrder prOrder = new ProductOrder();
 					prOrder.setProductId(order.getProducts().get(i).getProductId());
 					prOrder.setQuantity(order.getProducts().get(i).getQuantity());			
-					Double price = order.getProducts().get(i).getQuantity() * order.getProducts().get(i).getPrice();
+					Double price = Utilidades.formato(order.getProducts().get(i).getQuantity(), order.getProducts().get(i).getPrice());
 					prOrder.setPrice(price);			
 					listProduct.add(prOrder);
 				}
 								
 			}		
-			cart.setProducts(listProduct);		
+			cart.setProducts(listProduct);
 			listCart.add(cart);
+			System.out.println("listCart "+listCart.get(0).getProducts().size());
 			logger.info("completed successfully modProductCart");
-			return responseEntity.ok(listCart);
+			return responseEntity.ok(listCart.get(0));
 		} catch (Exception e) {
 			logger.info("ERROR ON modProductCart {}",e);
 			return ResponseEntity.status(HttpStatus.EXPECTATION_FAILED).body("The service is unable to respond at the moment");

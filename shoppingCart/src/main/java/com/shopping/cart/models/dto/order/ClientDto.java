@@ -1,5 +1,7 @@
 package com.shopping.cart.models.dto.order;
 
+import jakarta.validation.constraints.Max;
+import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.NotEmpty;
 import jakarta.validation.constraints.NotNull;
 
@@ -7,6 +9,8 @@ import jakarta.validation.constraints.NotNull;
 public class ClientDto {
 	
 	@NotNull(message = "userId may not be empty")
+	@Min(value = 1, message = "the userId must be equal to or greater than 1") 
+	@Max(value = 9999999, message = "the userId must be equal to or less than 9999999")
 	private Long userId;
 	@NotEmpty(message = "date may not be empty")
 	private String date;

@@ -2,11 +2,11 @@ package com.shopping.cart.models.dto.order;
 
 import java.util.List;
 
-import jakarta.validation.constraints.NotEmpty;
+import jakarta.validation.Valid;
 
 public class OrderDto extends ClientDto{
 	
-	
+	@Valid
 	private List<ProductOrder> products;
 
 	public List<ProductOrder> getProducts() {
