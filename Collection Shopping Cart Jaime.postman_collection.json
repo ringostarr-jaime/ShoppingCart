@@ -95,8 +95,24 @@
 				{
 					"name": "getOrder",
 					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzUxMiJ9.eyJqdGkiOiJKV1QiLCJzdWIiOiJqYWltZSIsImF1dGhvcml0aWVzIjpbIlJPTEVfVVNFUiJdLCJpYXQiOjE3MzQ2NDg1MzYsImV4cCI6MTczNDY0OTEzNn0.GPbzsp7Ne2OeUJ7sP1qGYov-iy4MZOB-hwt2BHEys77NHeg1l0IczGt-ENymQwMl-pbiZ_we92haWXuZAZ1fUg",
+									"type": "string"
+								}
+							]
+						},
 						"method": "POST",
-						"header": [],
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzUxMiJ9.eyJqdGkiOiJKV1QiLCJzdWIiOiJqYWltZSIsImF1dGhvcml0aWVzIjpbIlJPTEVfVVNFUiJdLCJpYXQiOjE3MzQ2NDcyOTEsImV4cCI6MTczNDY0Nzg5MX0._lAkJFltlUhpQS1Sz-QvsqILOW5PnXws-S3PdCAaMm--S_aIRjV1fsOx78fw5tSvrUzCin8Pcpw-BojX4Dr6cQ",
+								"type": "default"
+							}
+						],
 						"body": {
 							"mode": "raw",
 							"raw": "{\r\n\t\"userId\": 5,\r\n\t\"date\": \"2020-02-03\"\r\n}",
@@ -393,6 +409,39 @@
 					"response": []
 				}
 			]
+		},
+		{
+			"name": "getToken",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "user",
+							"value": "jaime",
+							"type": "default"
+						},
+						{
+							"key": "password",
+							"value": "jaimeRodas",
+							"type": "default"
+						}
+					]
+				},
+				"url": {
+					"raw": "localhost:8080/user",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"user"
+					]
+				}
+			},
+			"response": []
 		}
 	]
 }

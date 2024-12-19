@@ -23,7 +23,8 @@ public class ErrorExceptionHandler {
 		Map<String, String> errors = new HashMap<>(); 
 		ex.getBindingResult().getAllErrors().forEach(error -> { 
 		String fieldName = ((FieldError) error).getField(); 
-		String errorMessage = error.getDefaultMessage(); errors.put(fieldName, errorMessage); 
+		String errorMessage = error.getDefaultMessage(); 
+		errors.put(fieldName, errorMessage); 
 		}); 
 		return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(errors);
 		}
